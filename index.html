@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard AQI Medan</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .left, .right {
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .row:hover {
+      background: #f9f9f9;
+    }
+
+    .aqi {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .baik { background: #4caf50; }
+    .sedang { background: #ff9800; }
+
+    canvas {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    #summary {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    #summary p {
+      font-size: 16px;
+    }
+
+    #summary b {
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div style="height:5px; background: linear-gradient(to right, #00c6ff, #0072ff); margin-bottom:20px;"></div>
+
+<h2>🌍 Air Quality Dashboard • Medan</h2>
+
+<!-- CARD RINGKASAN -->
+<div class="card" id="summary"></div>
+
+<div class="container">
+
+  <div class="left">
+    <div class="card">
+      <h3>Data Harian</h3>
+      <div id="data"></div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="card">
+      <h3>Grafik Tren AQI</h3>
+      <canvas id="chartLine"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Perbandingan AQI</h3>
+      <canvas id="chartBar"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
