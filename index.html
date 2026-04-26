@@ -3,162 +3,82 @@
 <head>
   <title>Air Quality Dashboard Medan</title>
 
-  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CHART -->
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center;
-      background-size: cover;
-      position: relative;
-    }
-
-    /* DARK OVERLAY */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    h1 {
-      text-align: center;
-      color: white;
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-
-    /* SUMMARY */
-    .summary {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .box {
-      flex: 1;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 20px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
-
-    .box:hover {
-      transform: translateY(-5px);
-    }
-
-    .icon {
-      font-size: 30px;
-      background: rgba(255,255,255,0.2);
-      padding: 10px;
-      border-radius: 50%;
-    }
-
-    .box h2 {
-      margin: 0;
-      font-size: 30px;
-    }
-
-    .status {
-      background: rgba(255,255,255,0.2);
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-size: 12px;
-    }
-
-    /* CARD */
-    .card {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .aqi {
-      padding: 5px 12px;
-      border-radius: 10px;
-      font-weight: bold;
-      color: white;
-    }
-
-    .baik { background: #4CAF50; }
-    .sedang { background: #FF9800; }
-
-    canvas {
-      background: white;
-      border-radius: 10px;
-      padding: 10px;
-    }
-
-  </style>
 </head>
 
 <body>
 
-<h1>🌍 Air Quality Dashboard - Medan</h1>
+<div class="container">
 
-<!-- SUMMARY -->
-<div class="summary">
-  <div class="box">
-    <div class="icon">🌿</div>
-    <div>
-      <p>Rata-rata AQI</p>
-      <h2 id="avg"></h2>
-      <span class="status">Sedang</span>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title">
+
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" />
+        <span>AirSense</span>
+      </div>
+
+      <h1>AIR QUALITY <span>DASHBOARD</span></h1>
+      <p class="subtitle">Pantau kualitas udara secara real-time di Kota Medan</p>
+    </div>
+
+    <div class="info">
+      <div>📍 Medan, Sumatera Utara</div>
+      <div>📅 7 Hari Terakhir</div>
     </div>
   </div>
 
-  <div class="box">
-    <div class="icon">📊</div>
-    <div>
-      <p>AQI Tertinggi</p>
-      <h2 id="max"></h2>
-      <span class="status">Sedang</span>
+  <!-- SUMMARY -->
+  <div class="summary">
+
+    <div class="box">
+      <h3>Rata-rata AQI</h3>
+
+      <div class="box-header">
+        <h2 id="avg"></h2>
+        <span class="badge"></span>
+      </div>
+
+      <p class="desc">Rata-rata 7 hari terakhir</p>
     </div>
+
+    <div class="box">
+      <h3>AQI Tertinggi</h3>
+
+      <div class="box-header">
+        <h2 id="max"></h2>
+        <span class="badge"></span>
+      </div>
+
+      <p class="desc">Nilai tertinggi 7 hari</p>
+    </div>
+
   </div>
+
+  <!-- CONTENT -->
+  <div class="grid">
+    
+    <div class="card">
+      <h3>Data Harian</h3>
+      <div id="data"></div>
+    </div>
+
+    <div class="card">
+      <h3>Grafik Tren AQI</h3>
+      <canvas id="chart"></canvas>
+    </div>
+
+  </div>
+
 </div>
 
-<!-- DATA -->
-<div class="card">
-  <h3>Data Harian</h3>
-  <div id="data"></div>
-</div>
-
-<!-- CHART -->
-<div class="card">
-  <h3>Grafik Tren AQI</h3>
-  <canvas id="chart"></canvas>
-</div>
-
-<div class="card">
-  <h3>Perbandingan AQI</h3>
-  <canvas id="chartBar"></canvas>
-</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 AirSense Dashboard | Developed by Aldy Putra</p>
+</footer>
 
 <script src="app.js"></script>
 
