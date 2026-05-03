@@ -87,8 +87,6 @@ Data yang digunakan merupakan data AQI berdasarkan pengamatan nyata, namun pada 
 ## Pembuat
 
 **Aldy Putra Manurung,**
- **Dela Octavia Damanik,**
- **Manasse Givtauli Gultom**
 
 ---
 
